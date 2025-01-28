@@ -1,0 +1,269 @@
+/*!
+global > color
+------------------------------
+*/
+:root {
+    --color-bg-primary: #524433;
+    --color-bg-secondary: #efede9;
+    --color-bg-black: #000000;
+    --color-bg-white: #ffffff;
+    --color-border-black: #000000;
+    --color-border-white: #ffffff;
+    --color-font-primary: #524433;
+    --color-font-white: #ffffff;
+    --color-font-base: #000000;
+    --color-font-link: #4d97e6;
+}
+
+/*!
+global > content-width
+------------------------------
+*/
+:root {
+    --width-content-s: 960px;
+    --width-content: 1080px;
+    --width-content-l: 1200px;
+}
+
+/*!
+global > font
+------------------------------
+*/
+:root {
+    --font-family-base: "Noto Sans JP", sans-serif;
+    --font-family-english: "Montserrat", sans-serif;
+}
+
+/*!
+foundation > reset
+------------------------------
+*/
+html {
+    color: #000;
+    background: #fff;
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+caption,
+th {
+    text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+q:before,
+q:after {
+    content: "";
+}
+
+abbr,
+acronym {
+    border: 0;
+    font-variant: normal;
+}
+
+sup {
+    vertical-align: text-top;
+}
+
+sub {
+    vertical-align: text-bottom;
+}
+
+input,
+textarea,
+select,
+button {
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    *font-size: 100%;
+    border-radius: 0;
+    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: inherit;
+}
+
+input,
+textarea,
+select {
+    font-size: 16px;
+}
+
+textarea {
+    resize: vertical;
+    display: block;
+}
+
+button {
+    padding: 0;
+    cursor: pointer;
+}
+
+legend {
+    color: #000;
+}
+
+main {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+
+svg {
+    display: block;
+}
+
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+}
+
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/*!
+foundation > base
+------------------------------
+*/
+body {
+    line-height: 1.8;
+    font-size: 16px;
+    color: var(--color-font-base);
+    font-family: var(--font-family-base);
+    line-height: 2;
+}
+
+/*!
+editor-style
+------------------------------
+*/
+*:first-child {
+    margin-top: 0;
+}
+
+*:last-child {
+    margin-bottom: 0;
+}
+
+p {
+    margin: 24px 0;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 24px;
+    margin: 48px 0 24px;
+}
+
+h3 {
+    font-size: 20px;
+    margin: 32px 0 24px;
+}
+
+strong {
+    font-weight: bold;
+}
+
+ul,
+ol {
+    padding-left: 24px;
+}
+
+ul li {
+    list-style-type: disc;
+    margin-left: 24px;
+}
+
+ol li {
+    list-style-type: decimal;
+    margin-left: 24px;
+}
+
+a {
+    text-decoration: underline;
+    color: var(--color-font-link);
+}
