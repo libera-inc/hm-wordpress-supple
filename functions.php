@@ -96,3 +96,39 @@ remove_action( 'wp_head', 'rel_canonical' ); // カノニカル
 remove_action( 'wp_print_styles', 'print_emoji_styles' ); // 絵文字に関するCSS
 remove_action( 'admin_print_scripts', 'print_emoji_detection_script' ); // 絵文字に関するJavaScript
 remove_action( 'admin_print_styles', 'print_emoji_styles' ); // 絵文字に関するCSS
+
+/**
+ * 日付アーカイブをサイトマップから除外
+ */
+function remove_date_archives_from_xml_output() {
+    // サイトマップリクエストかチェック
+    if (strpos($_SERVER['REQUEST_URI'], 'sitemap') !== false && 
+        strpos($_SERVER['REQUEST_URI'], '.xml') !== false) {
+        
+        ob_start(function($buffer) {
+            // 年/月形式の日付アーカイブエントリを削除
+            // 例: /2024/03/, /2023/08/ など
+            $pattern = '/<url>\s*<loc>[^<]*\/\d{4}\/\d{2}\/\s*<\/loc>.*?<\/url>/s';
+            $buffer = preg_replace($pattern, '', $buffer);
+            
+            // 年のみの形式も削除（もしあれば）
+            // 例: /2024/, /2023/ など  
+            $pattern_year = '/<url>\s*<loc>[^<]*\/\d{4}\/\s*<\/loc>.*?<\/url>/s';
+            $buffer = preg_replace($pattern_year, '', $buffer);
+            
+            // 空行を削除してXMLを整形
+            $buffer = preg_replace('/\n\s*\n/', "\n", $buffer);
+            
+            return $buffer;
+        });
+    }
+}
+add_action('template_redirect', 'remove_date_archives_from_xml_output', 1);
+
+// より確実にするため、WordPressのinitフックでも実行
+function force_remove_date_archives() {
+    if (isset($_GET['sitemap']) || strpos($_SERVER['REQUEST_URI'], 'sitemap') !== false) {
+        remove_date_archives_from_xml_output();
+    }
+}
+add_action('init', 'force_remove_date_archives', 1);
